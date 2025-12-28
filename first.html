@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindFlow Notes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:ital,wght@0,300;0,400;1,400&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
+  
+  <link rel="stylesheet" href="first.css">
+</head>
+<body>
+
+<div class="app-container">
+  
+  <aside class="sidebar">
+    <div class="brand">
+      <h1>✨ MindFlow</h1>
+      <p>Capture your daily thoughts.</p>
+    </div>
+    
+    <div class="controls">
+      <input type="text" id="search" placeholder="🔍 Search your mind...">
+      <button id="themeToggle" class="icon-btn" title="Toggle Theme">🌙</button>
+    </div>
+
+    <div class="create-card glass-panel">
+      <input type="text" id="title" placeholder="Title your thought...">
+      <textarea id="content" placeholder="What's on your mind today?"></textarea>
+      <input type="text" id="tags" placeholder="#tags (comma separated)">
+      <div id="statusIndicator" class="status-text">Draft</div>
+      <button id="addBtn" class="primary-btn">Save Note (Ctrl + S)</button>
+      <!-- <button id="addBtn" class="primary-btn">Save Note</button> -->
+    </div>
+
+    <div class="tools">
+      <button id="exportBtn" class="text-btn">Export JSON</button>
+      <label for="importInput" class="text-btn" style="cursor:pointer">Import JSON</label>
+      <input type="file" id="importInput" accept=".json" style="display:none">
+    </div>
+  </aside>
+
+  <main class="notes-grid" id="notesContainer">
+    </main>
+
+</div>
+
+<script src="sec.js"></script>
+</body>
+</html>

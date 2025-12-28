@@ -1,0 +1,330 @@
+:root {
+  --bg: #F3F4F6;
+  --sidebar-bg: #ffffff;
+  --text-main: #1F2937;
+  --text-muted: #6B7280;
+  --primary: #4F46E5;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --glass: rgba(255, 255, 255, 0.7);
+  --border: rgba(0,0,0,0.05);
+  
+  /* Fonts */
+  --font-ui: 'Inter', sans-serif;
+  --font-note: 'Merriweather', serif;
+}
+
+body.dark {
+  --bg: #111827;
+  --sidebar-bg: #1F2937;
+  --text-main: #F3F4F6;
+  --text-muted: #9CA3AF;
+  --primary: #818CF8;
+  --shadow: 0 4px 20px rgba(0,0,0,0.5);
+  --glass: rgba(31, 41, 55, 0.7);
+  --border: rgba(255,255,255,0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-main);
+  font-family: var(--font-ui);
+  height: 100vh;
+  overflow: hidden; /* Prevent body scroll, let containers scroll */
+}
+
+/* Layout */
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 350px;
+  background: var(--sidebar-bg);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border);
+  box-shadow: 5px 0 15px rgba(0,0,0,0.02);
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.brand h1 {
+  font-size: 1.8rem;
+  letter-spacing: -0.5px;
+  margin-bottom: 5px;
+}
+
+.brand p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 30px;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#search {
+  flex: 1;
+  background: var(--bg);
+  border: 1px solid transparent;
+  padding: 10px 15px;
+  border-radius: 12px;
+  color: var(--text-main);
+  outline: none;
+}
+#search:focus { border-color: var(--primary); }
+
+.icon-btn {
+  background: var(--bg);
+  border: none;
+  width: 40px;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* Glassmorphism Input Panel */
+.create-card {
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: auto; /* Pushes tools to bottom */
+}
+
+.create-card input, .create-card textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  padding: 10px 5px;
+  font-family: var(--font-ui);
+  color: var(--text-main);
+  resize: none;
+  outline: none;
+}
+
+.create-card textarea {
+  font-family: var(--font-note);
+  height: 80px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.primary-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: transform 0.1s;
+}
+
+.primary-btn:active { transform: scale(0.98); }
+
+/* Tools Footer */
+.tools {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.text-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.text-btn:hover { color: var(--primary); }
+
+/* Grid Area */
+.notes-grid {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-auto-rows: min-content; /* Critical for masonry-like feel */
+  gap: 25px;
+  align-items: start;
+}
+
+/* Note Card Styles */
+.note {
+  background: var(--sidebar-bg); /* Default fallback */
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.note:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  z-index: 2;
+}
+
+.note.pinned {
+  border: 2px solid var(--primary);
+}
+
+.note h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.note p {
+  font-family: var(--font-note);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  opacity: 0.9;
+  white-space: pre-wrap; /* Preserves line breaks */
+}
+
+.note-meta {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+.note-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  opacity: 0; /* Hidden until hover for cleaner look */
+  transition: opacity 0.2s;
+}
+
+.note:hover .note-actions {
+  opacity: 1;
+}
+
+.action-btn {
+  background: rgba(0,0,0,0.05);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: var(--text-main);
+}
+
+.action-btn:hover { background: rgba(0,0,0,0.1); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .app-container { flex-direction: column; overflow: auto; height: auto;}
+  .sidebar { width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+  .notes-grid { padding: 20px; overflow: visible; }
+  body { overflow: auto; }
+}
+/* ---------- MARKDOWN STYLES ---------- */
+/* Status Indicator */
+.status-text {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-align: right;
+  font-style: italic;
+  margin-bottom: 5px;
+  height: 1rem; /* Prevent layout jump */
+}
+
+/* Markdown Content Styling */
+.note-content {
+  font-family: var(--font-note);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+.note-content h1, .note-content h2, .note-content h3 {
+  font-family: var(--font-ui);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 10px 0 5px 0;
+  color: var(--primary);
+}
+
+.note-content p {
+  margin-bottom: 10px;
+}
+
+.note-content ul, .note-content ol {
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+.note-content blockquote {
+  border-left: 3px solid var(--primary);
+  padding-left: 10px;
+  color: var(--text-muted);
+  font-style: italic;
+  margin: 10px 0;
+}
+
+.note-content code {
+  background: rgba(0,0,0,0.05);
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.85em;
+}
+
+.note-content pre {
+  background: #2d2d2d;
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-bottom: 10px;
+}
+
+.note-content pre code {
+  background: transparent;
+  color: inherit;
+}
+
+.note-content img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+/* Checkbox style for todo lists */
+.note-content input[type="checkbox"] {
+  margin-right: 5px;
+}
