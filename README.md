@@ -33,6 +33,15 @@ A feature-rich personal knowledge management web application built with vanilla 
 
 ### Dark Mode
 ![Dark Mode](screenshots/darkmode.png.png)
+These above screenshots displsy the dark and light theme along with that one can see the responsiveness too.
+## 🎯 Learning Outcomes
+
+- State management in frontend applications
+- Efficient DOM manipulation
+- Client-side data persistence
+- Event-driven UI development
+
+
 
 
 
