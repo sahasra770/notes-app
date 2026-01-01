@@ -26,5 +26,14 @@ A feature-rich personal knowledge management web application built with vanilla 
 1. Clone the repository
 2. Open `index.html` in a modern browser
 3. Start creating notes
+## 📸 Screenshots
+
+### Light Mode
+![Light Mode](screenshots/lightmode.png.png)
+
+### Dark Mode
+![Dark Mode](screenshots/darkmode.png)
+
+
 
 
