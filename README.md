@@ -32,7 +32,8 @@ A feature-rich personal knowledge management web application built with vanilla 
 ![Light Mode](screenshots/lightmode.png.png)
 
 ### Dark Mode
-![Dark Mode](screenshots/darkmode.png)
+![Dark Mode](screenshots/darkmode.png.png)
+
 
 
 
